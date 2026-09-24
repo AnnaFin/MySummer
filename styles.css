@@ -1,0 +1,521 @@
+/* ===== Цветовая палитра ===== */
+:root {
+    --brown-deep: #2B1B12;
+    --brown:      #5C4033;
+    --brown-warm: #8B5A2B;
+    --terracotta: #C97B4B;
+    --cream:      #F5E6C8;
+    --sand:       #E8D5B7;
+    --sand-soft:  #F0DCC0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--cream);
+    color: var(--brown-deep);
+    line-height: 1.7;
+}
+
+h1, h2, h3, .navbar-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* ===== Универсальная адаптация ВСЕХ изображений ===== */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ===== Шапка (теперь прилипает к верху) ===== */
+.site-header {
+    background: linear-gradient(135deg, var(--brown-deep), var(--brown));
+    position: sticky;
+    top: 0;
+    z-index: 1030; /* Гарантирует, что шапка будет поверх остального контента */
+}
+.navbar-brand {
+    font-size: 1.5rem;
+    color: var(--cream) !important;
+}
+.navbar-text {
+    color: var(--sand) !important;
+    font-style: italic;
+}
+.nav-link {
+    color: var(--sand) !important;
+    transition: color .3s;
+}
+.nav-link:hover {
+    color: var(--terracotta) !important;
+}
+
+/* =====================================================
+   ГЕРОЙ
+   ===================================================== */
+.hero-section {
+    position: relative;
+    padding: 110px 0 90px;
+    background-image:
+        linear-gradient(135deg, rgba(43,27,18,.88) 0%, rgba(92,64,51,.72) 50%, rgba(201,123,75,.55) 100%),
+        url('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 70% 30%, rgba(245,230,200,.12), transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(201,123,75,.15), transparent 45%);
+    pointer-events: none;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+.hero-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(245,230,200,.15);
+    border: 1px solid rgba(245,230,200,.4);
+    border-radius: 50px;
+    font-size: .85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 1.2rem;
+}
+.hero-title {
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    color: var(--cream);
+    text-shadow: 2px 4px 20px rgba(0,0,0,.5);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: rgba(245,230,200,.85);
+    max-width: 540px;
+    margin-bottom: 1.5rem;
+}
+.hero-actions .btn-hero-primary {
+    background: var(--terracotta);
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all .3s;
+    box-shadow: 0 6px 20px rgba(201,123,75,.4);
+}
+.hero-actions .btn-hero-primary:hover {
+    background: var(--brown-warm);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(201,123,75,.55);
+}
+.hero-actions .btn-hero-outline {
+    background: transparent;
+    color: var(--cream);
+    border: 2px solid rgba(245,230,200,.6);
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all .3s;
+}
+.hero-actions .btn-hero-outline:hover {
+    background: rgba(245,230,200,.15);
+    color: var(--cream);
+    border-color: var(--cream);
+    transform: translateY(-3px);
+}
+
+/* ---- Фото героя (единственное с object-fit: cover) ---- */
+.hero-photo-wrapper {
+    position: relative;
+    display: inline-block;
+}
+.hero-photo {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    object-position: center;
+    border: 6px solid var(--sand);
+    position: relative;
+    z-index: 2;
+    animation: floatPhoto 4s ease-in-out infinite;
+}
+.hero-photo-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    height: 320px;
+    border: 2px dashed rgba(245,230,200,.5);
+    border-radius: 50%;
+    animation: rotateRing 22s linear infinite;
+    z-index: 1;
+}
+@keyframes floatPhoto {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+}
+@keyframes rotateRing {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* =====================================================
+   НЕБО.РЕКА
+   ===================================================== */
+.nebo-section {
+    background:
+        radial-gradient(circle at 15% 15%, rgba(201,123,75,.10), transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(139,90,43,.12), transparent 50%),
+        var(--sand-soft);
+    position: relative;
+    overflow: hidden;
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+}
+.nebo-section::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--terracotta) 25%,
+        var(--brown-warm) 50%,
+        var(--terracotta) 75%,
+        transparent 100%);
+}
+
+.nebo-title {
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
+    color: var(--brown-deep);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+.nebo-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: var(--terracotta);
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+
+.nebo-lead {
+    max-width: 680px;
+    color: var(--brown);
+    font-size: 1.05rem;
+    font-style: italic;
+}
+
+/* Текстовая карточка */
+.nebo-text-card {
+    background: var(--cream);
+    padding: 2rem;
+    border-radius: 18px;
+    border-left: 6px solid var(--terracotta);
+    box-shadow: 0 10px 30px rgba(43,27,18,.10);
+    color: var(--brown-deep);
+    position: relative;
+}
+.nebo-text-card::before {
+    content: "\201C";
+    position: absolute;
+    top: -10px; left: 18px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    color: var(--terracotta);
+    opacity: .35;
+    line-height: 1;
+}
+.nebo-text-card p {
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Плашка-ссылка */
+.nebo-link-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 24px;
+    background: var(--terracotta);
+    color: #fff;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: .95rem;
+    box-shadow: 0 6px 20px rgba(201,123,75,.35);
+    transition: all .3s ease;
+}
+.nebo-link-badge:hover {
+    background: var(--brown-warm);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(139,90,43,.45);
+}
+.nebo-link-badge i {
+    font-size: 1rem;
+}
+
+/* ---- Фото Небо.Река: выравнивание по высоте с текстовой карточкой ---- */
+.nebo-photo-row {
+    height: 100%;
+}
+
+.nebo-photo-row > .col-4 {
+    height: 100%;
+}
+
+.nebo-photo-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(43,27,18,.18);
+    border: 4px solid var(--cream);
+    background: var(--cream);
+    width: 100%;
+    height: 100%; /* Растягиваем на всю высоту колонки */
+}
+
+.nebo-img {
+    width: 100%;
+    height: 100%; /* Растягиваем на всю высоту рамки */
+    object-fit: cover; /* Заполняем пространство без искажений */
+    display: block;
+}
+
+/* ===== Общие заголовки секций ===== */
+.section-title {
+    color: var(--brown-deep);
+    margin-bottom: 1.2rem;
+    position: relative;
+    display: inline-block;
+}
+.section-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--terracotta);
+    margin-top: 8px;
+    border-radius: 2px;
+}
+.section-title.text-center::after {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =====================================================
+   О ЛЕТЕ — секция с фото-фоном
+   ===================================================== */
+.about-section {
+    position: relative;
+    background-image:
+        linear-gradient(135deg, rgba(43,27,18,.82) 0%, rgba(92,64,51,.75) 55%, rgba(201,123,75,.65) 100%),
+        url('https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 5rem 0 !important;
+    overflow: hidden;
+}
+.about-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 25% 25%, rgba(245,230,200,.10), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(201,123,75,.18), transparent 50%);
+    pointer-events: none;
+}
+.about-content {
+    position: relative;
+    z-index: 2;
+}
+.about-section .section-title {
+    color: var(--cream);
+}
+.about-section .section-title::after {
+    background: var(--terracotta);
+}
+.about-lead {
+    max-width: 720px;
+    color: rgba(245,230,200,.9);
+    font-size: 1.05rem;
+    font-style: italic;
+}
+
+.about-card {
+    background: var(--cream);
+    padding: 2rem;
+    border-radius: 18px;
+    border-left: 6px solid var(--terracotta);
+    color: var(--brown-deep);
+    box-shadow: 0 14px 34px rgba(0,0,0,.28);
+    transition: transform .4s ease, box-shadow .4s ease;
+}
+.about-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 44px rgba(0,0,0,.36);
+}
+.about-card h4 {
+    color: var(--brown-deep);
+    font-family: 'Cormorant Garamond', serif;
+}
+.about-card i {
+    color: var(--terracotta);
+}
+.about-card ul li {
+    padding: 4px 0;
+}
+
+/* ===== Галерея ===== */
+.gallery-section {
+    background-color: var(--sand);
+}
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 18px;
+    box-shadow: 0 8px 22px rgba(43,27,18,.15);
+    background: var(--cream);
+    /* Убраны transition и hover-эффекты */
+}
+figcaption {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--brown);
+}
+
+/* =====================================================
+   ЗИН — три иллюстрации
+   ===================================================== */
+.zine-section {
+    background-color: var(--cream);
+}
+.zine-text {
+    max-width: 720px;
+    color: var(--brown);
+}
+
+/* Колонка зина — вертикальный стек с отступом */
+.zine-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    height: 100%;
+}
+
+/* Иллюстрации зина: показываются полностью */
+.zine-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 18px;
+    background: var(--sand);
+    box-shadow: 0 10px 26px rgba(43,27,18,.15);
+    /* Убраны transition и hover-эффекты */
+}
+
+/* Левая колонка (Себас) — растягиваем по высоте правой
+   с сохранением пропорций самого изображения */
+.zine-row > .col-md-6:first-child .zine-col {
+    justify-content: center;
+}
+.zine-row > .col-md-6:first-child .zine-img {
+    width: 100%;
+}
+
+/* ===== Футер ===== */
+.site-footer {
+    background: linear-gradient(135deg, var(--brown), var(--brown-deep));
+    color: var(--sand);
+}
+.footer-title {
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 1px;
+}
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+.footer-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(245,230,200,.10);
+    border: 2px solid rgba(245,230,200,.35);
+    color: var(--cream);
+    font-size: 1.4rem;
+    text-decoration: none;
+    transition: all .3s ease;
+}
+.footer-social a:hover {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    color: #fff;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 24px rgba(201,123,75,.5);
+}
+.footer-copy {
+    color: rgba(232,213,183,.6);
+}
+
+/* =====================================================
+   АДАПТИВНОСТЬ
+   ===================================================== */
+@media (max-width: 992px) {
+    .hero-section {
+        background-attachment: scroll;
+        padding: 80px 0 60px;
+    }
+    .about-section {
+        background-attachment: scroll;
+    }
+    .hero-photo { width: 220px; height: 220px; }
+    .hero-photo-ring { width: 260px; height: 260px; }
+    .nebo-text-card { padding: 1.5rem; }
+}
+
+@media (max-width: 768px) {
+    .hero-section { padding: 60px 0 45px; }
+    .hero-title { font-size: 2.3rem; }
+    .hero-subtitle { font-size: 1rem; }
+    .hero-photo { width: 180px; height: 180px; }
+    .hero-photo-ring { width: 210px; height: 210px; }
+    .hero-actions .btn-hero-primary,
+    .hero-actions .btn-hero-outline {
+        padding: 10px 20px;
+        font-size: .9rem;
+    }
+    .nebo-title { font-size: 2rem; }
+    .nebo-lead { font-size: .95rem; }
+    .about-card { padding: 1.5rem; }
+    .footer-social a { width: 48px; height: 48px; font-size: 1.2rem; }
+}
+
+@media (max-width: 576px) {
+    .hero-badge { font-size: .7rem; padding: 6px 14px; }
+    .hero-title { font-size: 1.9rem; }
+    .nebo-text-card { padding: 1.2rem; }
+    .nebo-text-card::before { font-size: 3.5rem; }
+    .nebo-link-badge { font-size: .85rem; padding: 10px 18px; }
+}
