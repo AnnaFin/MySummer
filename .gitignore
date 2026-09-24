@@ -1,0 +1,9 @@
+# Исключения
+bin/
+obj/
+node_modules/
+.env
+
+# Служебные файлы ОС
+.DS_Store
+Thumbs.db
